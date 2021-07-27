@@ -18,6 +18,7 @@ class Board extends React.Component{
       squares: Array(9).fill(null),
       xIsNext: true,
     };
+
   }
 
   handleClick(i){
@@ -27,7 +28,7 @@ class Board extends React.Component{
       return;
     }
     squares[i] = this.state.xIsNext ? 'X' : 'O';
-    this.setState({squares: squares,
+    this.setState({squares: squares, 
     xIsNext: !this.state.xIsNext,
   });
   }
@@ -51,21 +52,25 @@ class Board extends React.Component{
     return(
       <div>
         <div className="status">{status}</div>
+
         <div className="board-row">
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
         </div>
+
         <div className= "board-row">
           {this.renderSquare(3)}
           {this.renderSquare(4)}
           {this.renderSquare(5)}
         </div>
+
         <div className= "board-row">
           {this.renderSquare(6)}
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
+
       </div>
     );
   }
@@ -80,8 +85,7 @@ function Square(props){
 }
 
 function calculateWinner(squares){
-  const lines =
-  [
+  const lines = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -93,14 +97,16 @@ function calculateWinner(squares){
   ];
 
   for(let i = 0 ; i < lines.length; i++){
+
     const [a,b,c] = lines[i];
-    
+
     if(squares[a] && squares[a] === squares[b] && squares[a] 
       ===squares[c]){
         return squares[a];
       }
   }
   return null;
+
 }
 
 // class Square extends React.Component{
@@ -127,6 +133,7 @@ class Game extends React.Component{
       <div className = "game">
         <div className= "game-board">
           <Board />
+
         </div>
         <div className= "game-info">
           <div>{/* status */}</div>
@@ -142,7 +149,6 @@ class Game extends React.Component{
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
-
 
 ReactDOM.render(
   <Game />,
